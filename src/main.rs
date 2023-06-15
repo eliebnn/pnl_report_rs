@@ -1,16 +1,16 @@
 use rand::Rng;
 mod trade_struct;
-mod core_struct;
+mod fifo_struct;
 
 use trade_struct::Trade;
-use core_struct::Core;
+use fifo_struct::{FIFO};
 
 fn main() {
 
     let mut rng = rand::thread_rng();
     let mut trades: Vec<Trade> = vec![];
 
-    for _i in 1..30001{
+    for _i in 1..1001{
         let price:f32 = rng.gen_range(5..10) as f32;
         let qty:f32 = rng.gen_range(-7..10) as f32;
         let qty = match qty {
@@ -28,8 +28,8 @@ fn main() {
     use std::time::Instant;
     let now = Instant::now();
 
-    let mut core = Core::new();
-    core.run(&trades);
+    let mut fifo = FIFO::new();
+    fifo.run(&trades);
 
     let elapsed = now.elapsed();
     println!("Elapsed: {:.2?}", elapsed);

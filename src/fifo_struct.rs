@@ -1,19 +1,19 @@
 use crate::trade_struct::Trade;
 use crate::trade_struct::UnwindTrade;
 
-pub struct Core {
+pub struct FIFO {
     stack: Vec<Trade>,
     unwind_trades: Vec<UnwindTrade>,
     side: i8
 }
 
-impl Default for Core {
-    fn default() -> Core {
-        Core{stack:vec![], unwind_trades:vec![], side: 0}
+impl Default for FIFO {
+    fn default() -> FIFO {
+        FIFO{stack:vec![], unwind_trades:vec![], side: 0}
     }
 }
 
-impl Core {
+impl FIFO {
 
     fn to_stack(&mut self, t: &Trade) {
         self.stack.push(t.clone());
@@ -95,8 +95,8 @@ impl Core {
 
     }
 
-    pub fn new() -> Core {
-        Core {
+    pub fn new() -> FIFO {
+        FIFO {
             stack: vec![],
             unwind_trades: vec![],
             side: 0
@@ -133,4 +133,3 @@ impl Core {
         }
     }
 }
-
