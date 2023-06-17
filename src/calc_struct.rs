@@ -25,9 +25,6 @@ pub trait Core {
         let mut qty_cumsum: f32 = 0.0;
         let mut count: usize = 0;
 
-        // let stack = self.get_stack();
-        // let unwind_trades = self.get_unwind_trades();
-
         let mut tmp_vec: Vec<UnwindTrade> = vec![];
 
         for (i, k) in self.get_stack().iter().enumerate(){
