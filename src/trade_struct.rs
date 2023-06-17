@@ -12,7 +12,7 @@ pub struct UnwindTrade {
 }
 
 impl UnwindTrade {
-    fn get_pnl(&self) -> f32 {
-        (self.price - self.unwind_price) * self.qty
+    pub fn get_pnl(&self) -> f32 {
+        (self.unwind_price - self.price) * self.qty
     }
 }  
